@@ -204,6 +204,7 @@ int main(int argc, char *argv[])
             ("cacert", bpo::value<std::string>(&Globals::globalConfig.curlConf.sCACertPath)->default_value(""), "Path to CA certificate bundle in PEM format")
             ("respect-umask", bpo::value<bool>(&Globals::globalConfig.bRespectUmask)->zero_tokens()->default_value(false), "Do not adjust permissions of sensitive files")
             ("user-agent", bpo::value<std::string>(&Globals::globalConfig.curlConf.sUserAgent)->default_value(DEFAULT_USER_AGENT), "Set user agent")
+            ("quiet", bpo::value<bool>(&Globals::globalConfig.bQuiet)->zero_tokens()->default_value(false), "Suppress some progress information")
 #ifdef USE_QT_GUI_LOGIN
             ("enable-login-gui", bpo::value<bool>(&Globals::globalConfig.bEnableLoginGUI)->zero_tokens()->default_value(false), "Enable login GUI when encountering reCAPTCHA on login form")
 #endif

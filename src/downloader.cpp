@@ -447,7 +447,9 @@ int Downloader::getGameDetails()
 
             // Print progress information once per 100ms
             std::this_thread::sleep_for(std::chrono::milliseconds(Globals::globalConfig.iProgressInterval));
-            std::cerr << "\033[J\r" << std::flush; // Clear screen from the current line down to the bottom of the screen
+            if (!Globals::globalConfig.bQuiet) {
+                std::cerr << "\033[J\r" << std::flush; // Clear screen from the current line down to the bottom of the screen
+            }
 
             // Print messages from message queue first
             Message msg;
@@ -466,11 +468,13 @@ int Downloader::getGameDetails()
                 dl_status |= status;
             }
 
-            std::cerr << "Getting game info " << (gameItems.size() - gameItemQueue.size()) << " / " << gameItems.size() << std::endl;
+            if (!Globals::globalConfig.bQuiet) {
+                std::cerr << "Getting game info " << (gameItems.size() - gameItemQueue.size()) << " / " << gameItems.size() << std::endl;
 
-            if (dl_status != DLSTATUS_FINISHED)
-            {
-                std::cerr << "\033[1A\r" << std::flush; // Move cursor up by 1 row
+                if (dl_status != DLSTATUS_FINISHED)
+                {
+                    std::cerr << "\033[1A\r" << std::flush; // Move cursor up by 1 row
+                }
             }
         }
 

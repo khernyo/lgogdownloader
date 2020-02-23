@@ -225,6 +225,7 @@ class Config
         bool bReport;
         bool bRespectUmask;
         bool bPlatformDetection;
+        bool bQuiet;
 #ifdef USE_QT_GUI_LOGIN
         bool bEnableLoginGUI;
 #endif
