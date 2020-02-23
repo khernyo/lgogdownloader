@@ -1,0 +1,8 @@
+*
+
+!cmake/
+!include/
+!man/
+!src/
+!CMakeLists.txt
+!main.cpp
